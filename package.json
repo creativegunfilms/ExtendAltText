@@ -1,0 +1,33 @@
+{
+  "private": true,
+  "scripts": {
+    "dev2": "next dev --turbo",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write \"**/*.{js,ts,tsx,md}\""
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "semi": true,
+    "trailingComma": "all",
+    "singleQuote": true
+  },
+  "dependencies": {
+    "browser-image-compression": "^2.0.2",
+    "encoding": "^0.1.13",
+    "next": "latest",
+    "react": "18.2.0",
+    "react-code-blocks": "^0.0.9-0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.0.3",
+    "@types/react": "18.0.15",
+    "@types/react-dom": "18.0.6",
+    "eslint": "8.19.0",
+    "eslint-config-next": "latest",
+    "prettier": "^2.7.1"
+  }
+}
