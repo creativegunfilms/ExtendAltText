@@ -34,7 +34,7 @@
 .hiddenbutton{
     display: inline-block;
     outline: 0;
-    cursor: pointer;
+    cursor: no-drop;
     border: none;
     padding: 0 56px;
     margin-right: 1rem;
@@ -42,8 +42,8 @@
     height: 45px;
     line-height: 45px;
     border-radius: 7px;
-    background-color: #79b0ee;
-    color: rgba(255, 255, 255, 0.39);
+    background-color: #919191;
+    color: rgb(255, 255, 255);
     font-weight: 400;
     font-size: 16px;
     box-shadow: 0 4px 14px 0 rgba(0, 79, 170, 0.144);
@@ -129,4 +129,12 @@
   }
   .inputFile:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  }
+  @media only screen and (max-width: 600px) {
+    .main{
+        background: none;
+        padding-left: 5rem;
+        padding-right: 5rem;
+        padding-top: 5rem;
+    }
   }
