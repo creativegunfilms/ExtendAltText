@@ -21,19 +21,19 @@ const fetchFromBackend = async (url) => {
 const Multiple = () => {
   let [incomingAlt, setIncomingAlt] = useState(null);
   let [loading, setLoading] = useState('Your data will be here...\n\n\n');
-  let [buttonHide, setButtonHide] = useState(0);
+  let [buttonHide, setButtonHide] = useState(false);
   //------------------------------input comp---------------------------------//
   let [urlData, setUrlData] = useState('');
   let [internalState, setInternalState] = useState('');
 
   //INPUT FORM HANDLER
   const formHandler = (e) => {
-    urlSet = [];
-    filenameSet = [];
-    setIncomingAlt(null);
     e.preventDefault();
     let url = e.target.urlInput.value;
-    if (url) {
+    if (url && !buttonHide) {
+      urlSet = [];
+      filenameSet = [];
+      setIncomingAlt(null);
       setUrlData(url);
       callTheDatabase(url);
     }
@@ -79,7 +79,7 @@ const Multiple = () => {
     setLoading('');
     urlSet = [];
     filenameSet = [];
-    setButtonHide(1);
+    setButtonHide(false);
   };
 
   //Function for pulling the data
@@ -100,6 +100,7 @@ const Multiple = () => {
   const fileUploader = async (e) => {
     setUrlData('');
     setLoading('converting files...');
+    setButtonHide(true);
 
     var filesData = e.target.files;
     var maxImageSizeMB = 0.5;
