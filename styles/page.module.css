@@ -42,11 +42,11 @@
     height: 45px;
     line-height: 45px;
     border-radius: 7px;
-    background-color: #f30000;
-    color: white;
+    background-color: #79b0ee;
+    color: rgba(255, 255, 255, 0.39);
     font-weight: 400;
     font-size: 16px;
-    box-shadow: 0 4px 14px 0 rgb(0 118 255 / 39%);
+    box-shadow: 0 4px 14px 0 rgba(0, 79, 170, 0.144);
     transition: background 0.2s ease,color 0.2s ease,box-shadow 0.2s ease;    
 }
 
