@@ -1,5 +1,6 @@
 'use client';
-import { useState } from 'react';
+
+import { use, useState } from 'react';
 import { CopyBlock, dracula } from "react-code-blocks";
 import Styles from '../styles/page.module.css';
 
@@ -14,7 +15,6 @@ const fetchFromBackend = async (url) => {
 };
 
 const InputComp = () => {
-  //------------------------------input comp---------------------------------//
   let [urlData, setUrlData] = useState('type...');
   let [internalState, setInternalState] = useState('No Data yet...');
 
@@ -38,7 +38,6 @@ const InputComp = () => {
       setInternalState('Problem with backend server...');
     }
   };
-  //------------------------------input comp---------------------------------//
   return (
     <>
       <form className={Styles.form} onSubmit={formHandler}>

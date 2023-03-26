@@ -7,51 +7,7 @@ import Styles from '../styles/page.module.css'
 var urlSet = [];
 var filenameSet = [];
 
-
-//DATA BEING FETCHED FROM THE NEXT BACKEND
-const fetchFromBackend = async (url) => {  
-  console.log(url);
-  const dataFromBackend = await fetch(`/api?${url}`, { mode: 'no-cors' });
-  if (dataFromBackend.ok) {
-    const internal = dataFromBackend.json();
-    return internal;
-  }
-};
-
 const Multiple = () => {
-  let [incomingAlt, setIncomingAlt] = useState(null);
-  let [loading, setLoading] = useState('Your data will be here...\n\n\n');
-  let [buttonHide, setButtonHide] = useState(0);
-  //------------------------------input comp---------------------------------//
-  let [urlData, setUrlData] = useState('');
-  let [internalState, setInternalState] = useState('');
-
-  //INPUT FORM HANDLER
-  const formHandler = (e) => {
-    urlSet = [];
-    filenameSet = [];
-    setIncomingAlt(null);
-    e.preventDefault();
-    let url = e.target.urlInput.value;
-    if (url) {
-      setUrlData(url);
-      callTheDatabase(url);
-    }
-  };
-
-  //CALLING THE BACKEND FUNCTION
-  const callTheDatabase = async (url) => {
-    const getData = await fetchFromBackend(url);
-    if (getData) {
-      const useDta = getData.data;
-      setInternalState(useDta);
-    } else {
-      setInternalState('Problem with backend server...');
-    }
-  };
-  //------------------------------input comp---------------------------------//
-
-
   const [blockState, sateBlockstate] = useState(1);
   const toggleButton = () => {
     if (blockState === 0) {
@@ -64,6 +20,11 @@ const Multiple = () => {
   //CALL FUNCTION FOR EACH
   let x = 0;
   //HANDLE CLICK
+  let [incomingAlt, setIncomingAlt] = useState(null);
+  let [loading, setLoading] = useState('Your data will be here...\n\n\n');
+  let [buttonHide, setButtonHide] = useState(0);
+  
+
   const buttonHandler = async () => {
     let arrD = [];
     for (let i = 0; i < urlSet.length; i++) {
@@ -98,7 +59,7 @@ const Multiple = () => {
   // AMIT, PLACE YOUR CODE HERE _________________________
 
   const fileUploader = async (e) => {
-    setUrlData('');
+
     setLoading('converting files...');
 
     var filesData = e.target.files;
@@ -158,24 +119,19 @@ const Multiple = () => {
 
   return (
     <>
-      <form className={Styles.form} onSubmit={formHandler}>
-        <input placeholder='Paste your Image URL to get the data' className={Styles.input} type="text" id="urlInput"></input>
-        <input className={Styles.button} type="submit"></input>
-        <input
-        className={Styles.inputFile}
+      <input
+      className={Styles.inputFile}
         accept="image/*"
         type={'file'}
         onChange={fileUploader}
         multiple
       ></input>
-      </form>
-
-      {incomingAlt && <label htmlFor='toggleSwitch'>Only Text</label>}
+      
+      {incomingAlt && <label htmlFor='toggleSwitch'>HTML or Text</label>}
       {incomingAlt && <input id='toggleSwitch' onChange={toggleButton} type='checkbox' />}
-      <br/>
       {blockState === 1 &&
         <CopyBlock
-          text={incomingAlt == null ? urlData =='' ? loading : `URL: ${urlData}\nDescription:\n${internalState}` : incomingAlt.map((units) => { return (`<img src="${units.fileName}" alt="${units.data}">\n`) }).join("")}
+          text={ incomingAlt == null ? loading : incomingAlt.map((units) => { return (`<img src="${units.fileName}" alt="${units.data}">\n`) }).join("")}
           language='html'
           showLineNumbers={incomingAlt == null ? false : true}
           theme={dracula}
@@ -185,7 +141,7 @@ const Multiple = () => {
       }
       {incomingAlt && blockState === 0 &&
         <CopyBlock
-          text={incomingAlt && incomingAlt.map((units) => { return (`File Name: ${units.fileName} \nDescription: ${units.data}\n\n`) }).join("")}
+          text={incomingAlt && incomingAlt.map((units) => { return (`File Name: ${units.fileName} \n Description: ${units.data}\n\n`) }).join("")}
           language='text'
           codeBlock
           showLineNumbers={false}
