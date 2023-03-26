@@ -78,7 +78,7 @@ const Multiple = () => {
     setIncomingAlt(arrD);
     setLoading('');
     urlSet = [];
-    filenameSet = [];
+    filenameSet = []; 
     setButtonHide(false);
   };
 
@@ -101,6 +101,7 @@ const Multiple = () => {
     setUrlData('');
     setLoading('converting files...');
     setButtonHide(true);
+    setIncomingAlt(null);
 
     var filesData = e.target.files;
     var maxImageSizeMB = 0.5;
@@ -161,7 +162,7 @@ const Multiple = () => {
     <>
       <form className={Styles.form} onSubmit={formHandler}>
         <input placeholder='Paste your Image URL to get the data' className={Styles.input} type="text" id="urlInput"></input>
-        <input className={Styles.button} type="submit"></input>
+        <input className={buttonHide ? Styles.hiddenbutton : Styles.button} type="submit"></input>
         <input
         className={Styles.inputFile}
         accept="image/*"
