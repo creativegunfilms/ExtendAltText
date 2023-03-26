@@ -8,7 +8,10 @@ export default function RootLayout({ children }) {
   return (
     <>
       <html>
-        <title>Extend Alt Text</title>
+        <head>
+          <title>Extend Alt Text</title>
+        
+        </head>
         <body className={SpaceG.className}>
           {children}
         </body>

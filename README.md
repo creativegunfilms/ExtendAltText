@@ -1,24 +1,22 @@
-# Next.js + Turbopack App Directory Playground
+# Extend Alt Text
 
-[Turbopack](https://turbo.build/pack) is a new incremental bundler optimized for JavaScript and TypeScript, written in Rust by the creators of Webpack and Next.js at [Vercel](https://vercel.com). On large applications Turbopack updates 10x faster than Vite and 700x faster than Webpack ([benchmark](https://turbo.build/pack/docs/benchmarks)). For the biggest applications the difference grows even more stark with updates up to 20x faster than Vite.
+This Next-Alt-Text-Generator is a extended version of the [Alt Text Generator](https://github.com/vercel/examples/tree/main/solutions/alt-tag-generator) built with NextJs  v13, but extends its fuctionality by introducing options like user input to generate alt text and upload multiple files to generate alt texts.
 
-This playground is a mirror of the [Next.js v13 App Directory Playground](https://github.com/vercel/app-playground), but uses Turbopack as the Next.js development server (`next dev --turbo`).
-
-**As a reminder, Turbopack is currently in alpha and not yet ready for production. We appreciate your ongoing support as we work to make it ready for everyone.**
 
 ## Running Locally
 
-1. Install dependencies: `yarn`
-1. Start the dev server: `yarn dev`
+1. Install dependencies: `npm i`
+1. Start the dev server: `npm run dev`
 
-**Note:** The playground uses [Tailwind CSS](https://tailwindcss.com) via [PostCSS](https://turbo.build/pack/docs/features/css#postcss).
-
-For more information, see: https://turbo.build/pack/docs/features/css#tailwind-css
+**Note:** This project uses [File.io](https://file.io) and [Next Alt Text Generator](https://alt-text-generator.vercel.app/).
 
 ## Documentation
 
-https://nextjs.link/with-turbopack
+https://github.com/vercel/examples/tree/main/solutions/alt-tag-generator
 
-## Providing Feedback
+## Website
 
-https://nextjs.link/turbopack-feedback
+https://extend-alt-text.vercel.app/
+
+## Developed by
+[Titas Mallick](https://github.com/titasmallick) & [Amit Sen](https://github.com/amit-sen) as open source project.

@@ -4,6 +4,9 @@
     padding-right: 20rem;
     padding-top: 5rem;
 }
+.main>p>a, .main>li>a{
+    color:  #0070f3;
+}
 .section{
     margin-top: 1rem;
 }
@@ -97,6 +100,7 @@
 
 .inputFile::before {
     content: 'Upload Images';
+    text-align: center;
     display: inline-block;
     outline: 0;
     cursor: pointer;
@@ -109,6 +113,7 @@
     color: white;
     font-weight: 400;
     font-size: 16px;
+    width: stretch;
     box-shadow: 0 4px 14px 0 rgb(0 118 255 / 39%);
     transition: background 0.2s ease,color 0.2s ease,box-shadow 0.2s ease;
     
@@ -130,11 +135,43 @@
   .inputFile:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
   }
-  @media only screen and (max-width: 600px) {
+
+  @media only screen and (max-width: 1500px){
     .main{
-        background: none;
         padding-left: 5rem;
         padding-right: 5rem;
-        padding-top: 5rem;
+    }
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .main{
+        background: none;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 1rem;
+    }
+    .main>p:nth-child(2){
+        text-align: justify;
+    }
+    .form{
+        flex-direction: column;
+        padding: 0px;
+    }
+    .input{
+        width: 92%;
+        margin-bottom: 1rem;
+    }
+    .button{
+        width: stretch;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .inputFile{
+        border-left: none;
+        width: 100%;
+    }
+    .inputFile::before {
+        width: stretch;
+        text-align: center;
     }
   }
