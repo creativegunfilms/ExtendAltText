@@ -10,7 +10,7 @@ var filenameSet = [];
 
 //DATA BEING FETCHED FROM THE NEXT BACKEND
 const fetchFromBackend = async (url) => {  
-  console.log(url);
+  //console.log(url);
   const dataFromBackend = await fetch(`/api?${url}`, { mode: 'no-cors' });
   if (dataFromBackend.ok) {
     const internal = dataFromBackend.json();
@@ -113,7 +113,7 @@ const Multiple = () => {
 
       const imageFile = filesData[x];
       const imageFileSize = imageFile.size / 1024 / 1024;
-      console.log(`originalFile size ${imageFileSize} MB`); // before file compression
+      //console.log(`originalFile size ${imageFileSize} MB`); // before file compression
 
       const formData = new FormData();
 
@@ -126,16 +126,14 @@ const Multiple = () => {
       try {
         if (imageFileSize > maxImageSizeMB) {
           const compressedFile = await imageCompression(imageFile, options); // file compression
-          console.log(
-            `compressedFile size ${compressedFile.size / 1024 / 1024} MB`,
-          ); // after file compression
+          //console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`,); // after file compression
           formData.append('file', compressedFile, filesData[x].name);
         } else {
-          console.log(`compress করার প্রয়োজন নেই `);
+          //console.log(`compress করার প্রয়োজন নেই `);
           formData.append('file', imageFile, filesData[x].name);
         }
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
 
       // AMIT, PLACE YOUR CODE HERE _________________________
@@ -146,7 +144,7 @@ const Multiple = () => {
       })
         .then((response) => response.json())
         .then((result) => {
-          console.log('Success:', result.link);
+          //console.log('Success:', result.link);
           urlSet.push(result.link);
           filenameSet.push(filesData[x].name);
           setLoading('Sending Data to File.io...');
