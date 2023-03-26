@@ -135,7 +135,12 @@
   .inputFile:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
   }
-
+  .check{
+    margin-bottom: 1rem;
+    width: 1rem;
+    border: none;
+    outline: none;
+  }
   @media only screen and (max-width: 1500px){
     .main{
         padding-left: 5rem;
@@ -162,6 +167,11 @@
         margin-bottom: 1rem;
     }
     .button{
+        width: stretch;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .hiddenbutton{
         width: stretch;
         margin-left: 0px;
         margin-right: 0px;

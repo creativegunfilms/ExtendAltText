@@ -172,8 +172,8 @@ const Multiple = () => {
       ></input>
       </form>
 
+      {incomingAlt && <input className={Styles.check} id='toggleSwitch' onChange={toggleButton} type='checkbox' />}
       {incomingAlt && <label htmlFor='toggleSwitch'>Only Text</label>}
-      {incomingAlt && <input id='toggleSwitch' onChange={toggleButton} type='checkbox' />}
       <br/>
       {blockState === 1 &&
         <CopyBlock
