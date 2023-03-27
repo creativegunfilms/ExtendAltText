@@ -13,7 +13,7 @@ It is recommended not to use turbopack in this particular project.
 **Note:** This project uses [File.io](https://file.io) and [Next Alt Text Generator](https://alt-text-generator.vercel.app/).
 
 # How to upload your file to 'File.io'?
-Create <input type='file'>
+Create ```<input type='file'>```
 
 Images are reduced in size before uploading to file.io to reduce bandwith usage
 
