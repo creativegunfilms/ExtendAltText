@@ -1,10 +1,15 @@
 import { ImageResponse } from '@vercel/og';
- 
+import { NextRequest } from 'next/server';
+
 export const config = {
-  runtime: 'edge',
+  runtime: 'experimental-edge',
 };
- 
-export default function () {
+
+const  OgImageHandler = async (req: NextRequest)=> {
+    const { searchParams } = new URL(req.url);
+    const title = searchParams.get('title')||'Mate'
+    // const data = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+    // const jsonData = await data.json()
   return new ImageResponse(
     (
       <div
@@ -19,7 +24,7 @@ export default function () {
           justifyContent: 'center',
         }}
       >
-        Hello world!
+        Hello there! {title}
       </div>
     ),
     {
@@ -28,3 +33,5 @@ export default function () {
     },
   );
 }
+
+export default OgImageHandler;
