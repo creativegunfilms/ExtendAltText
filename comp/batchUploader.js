@@ -30,6 +30,7 @@ const Multiple = () => {
   const formHandler = (e) => {
     e.preventDefault();
     let url = e.target.urlInput.value;
+    sateBlockstate(1);
     if (url && !buttonHide) {
       urlSet = [];
       filenameSet = [];
@@ -72,7 +73,7 @@ const Multiple = () => {
       if (getData) {
         const useData = getData.data;
         arrD.push({ data: useData, fileName: filenameSet[i] });
-        setLoading(`Got Data for File No. ${i + 1}`);
+        setLoading(`Got Data for File No. ${i + 1} of ${urlSet.length} file(s).`);
       }
     }
     setIncomingAlt(arrD);
@@ -107,7 +108,7 @@ const Multiple = () => {
     var maxImageSizeMB = 0.5;
 
     for (let x = 0; x < filesData.length; x++) {
-      setLoading(`File No. ${x + 1} being converted...`);
+      setLoading(`File No. ${x + 1} of ${filesData.length} file(s) being converted...`);
 
       //RESIZE THE FILES
 
@@ -185,7 +186,7 @@ const Multiple = () => {
       }
       {incomingAlt && blockState === 0 &&
         <CopyBlock
-          text={incomingAlt && incomingAlt.map((units) => { return (`File Name: ${units.fileName} \nDescription: ${units.data}\n\n`) }).join("")}
+          text={incomingAlt == null ? urlData =='' ? loading : `URL: ${urlData}\nDescription:\n${internalState}` : incomingAlt.map((units) => { return (`File Name: ${units.fileName} \nDescription: ${units.data}\n\n`) }).join("")}
           language='text'
           codeBlock
           showLineNumbers={false}
