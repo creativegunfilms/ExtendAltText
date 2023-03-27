@@ -10,10 +10,6 @@ export default function RootLayout({ children }) {
       <html>
         <head>
           <title>Extend Alt Text</title>
-          <meta
-            property="og:image"
-            content="https://extend-alt-text.vercel.app/legacyApi"
-          />
         </head>
         <body className={SpaceG.className}>
           {children}
