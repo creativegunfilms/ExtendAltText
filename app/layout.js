@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
         <head>
           <title>Extend Alt Text</title>
           <meta property="og:type" content="website" />
-          <meta property="og:title" content="extend alt text" />
+          <meta property="og:title" content="Extend alt text" />
           <meta property="og:description" content="Generate Multiple Alt Text, AI Powered" />
           <meta property="og:site_name" content="Next-Alt-Text-Generator" />
           <meta property="og:url" content="https://extend-alt-text.vercel.app/" />
