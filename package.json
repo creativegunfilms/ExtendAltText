@@ -15,6 +15,7 @@
     "singleQuote": true
   },
   "dependencies": {
+    "@vercel/og": "^0.4.1",
     "browser-image-compression": "^2.0.2",
     "encoding": "^0.1.13",
     "next": "latest",
