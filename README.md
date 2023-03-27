@@ -1,3 +1,4 @@
+![ogimage](https://github.com/creativegunfilms/ExtendAltText/blob/main/ogimage_github.jpg)
 # Extend Alt Text
 
 This Next-Alt-Text-Generator is a extended version of the [Alt Text Generator](https://github.com/vercel/examples/tree/main/solutions/alt-tag-generator) built with NextJs  v13, but extends its fuctionality by introducing options like user input to generate alt text and upload multiple files to generate alt texts.
