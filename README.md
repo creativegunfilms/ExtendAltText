@@ -179,6 +179,57 @@ https://beta.nextjs.org/docs/rendering/server-and-client-components
 
 It is recomended to leave the client components in the leaf nodes.
 
+# Generate Vercel OG Images with new APP structure
+Now when there is no `Pages/Api` directory, it was little difficult to find out how to implement OG Image generation by vercel with new NextJs App structure.
+The way it works is like the following:
+```js
+import { ImageResponse } from '@vercel/og';
+ 
+export const config = {
+  runtime: 'edge',
+};
+ 
+
+
+export async function GET(request) {
+   return  new ImageResponse(
+      (
+        <div
+          style={{
+            fontSize: 128,
+            background: 'white',
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            textAlign: 'center',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          Hello world!
+        </div>
+      ),
+      {
+        width: 1200,
+        height: 600,
+      },
+    );
+    // return new Response(imageG);
+}
+```
+This must be made inside `App/directoryName/route.js`. And the statically generated image will be available at ``http://localhost:3000/directoryName`` or ``https://domainname.vercel.app/directoryName``
+use the following code in the main ``layout.js``
+```html
+<head>
+  <title>Hello world</title>
+  <meta
+    property="og:image"
+    content="https://domainname.vercel.app/directoryName"
+  />
+</head>
+```
+See this question prompted by us on the [stackoverflow](https://stackoverflow.com/questions/75858925/how-to-use-vercel-og-image-in-next-js-app-folder).
+
 
 ## Documentation
 
