@@ -26,7 +26,7 @@ export default async function Page() {
       <section className={Styles.section}>
         <Multiple />
       </section>
-      <footer className={Styles.footer}>Developed by: 🔵🔴🟢  | India | 2023</footer>
+      <footer className={Styles.footer}>Developed by: <Link href={'https://extend-alt-text.vercel.app/ogimage'}>🔵🔴🟢</Link>  | India | 2023</footer>
     </div>
   );
 }
