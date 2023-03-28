@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
           <meta property="og:description" content="Generate Multiple Alt Text, AI Powered" />
           <meta property="og:site_name" content="Next-Alt-Text-Generator" />
           <meta property="og:url" content="https://extend-alt-text.vercel.app/" />
-          <meta property="og:image" content="https://extend-alt-text.vercel.app/ogimage.jpg" />
+          <meta property="og:image" content="https://extend-alt-text.vercel.app/ogimage" />
         </head>
         <body className={SpaceG.className}>
           {children}
