@@ -359,4 +359,8 @@ https://github.com/vercel/examples/tree/main/solutions/alt-tag-generator
 https://extend-alt-text.vercel.app/
 
 ## Developed by
-[Titas Mallick](https://github.com/titasmallick) & [Amit Sen](https://github.com/amit-sen) as open source project.
+[Titas Mallick](https://github.com/titasmallick) 
+& [Amit Sen](https://github.com/amit-sen) as open source project.
+
+## License
+Licensed under MIT License.
