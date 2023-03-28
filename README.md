@@ -228,6 +228,125 @@ use the following code in the main ``layout.js``
   />
 </head>
 ```
+## Generating random image and its's description as OG image using @vercel/og inside NextJs App directory and route.js (route handler / Api replacement)
+
+
+Before returning the ImageResponse in the GET request mentioned above, one fetch request is made.
+First [Picsum.photos](https://picsum.photos/) is used to get an Url for a random image:
+```js
+let randomdid = Math.floor(Math.random() * 1083);
+```
+They provides 1084 images based on ids, the idea is to generate the id in ranodm. Then the actual Url is set and fetch request is made to the Alt Text generator with that particular Url:
+```js
+//Setting the image url
+    var URL = `https://picsum.photos/id/${randomdid}/300`;
+
+    //Fetch the Alt Text Generator
+    let fetchDesc;
+    try {
+     const res = await fetch(`https://alt-text-generator.vercel.app/api/generate?imageUrl=${URL}`,
+        { mode: 'no-cors', next: { revalidate: 10 } },
+      );
+      fetchDesc = await res.json();
+    } catch (error) {
+      //Using Fallback to narrow error boundary
+      URL = '/fallbackog.jpg'
+      fetchDesc = 'Extend Alt Text Can Generate Descriptions';
+    }
+```
+As the whole thing is performed inside the get function hich inturn returns the image response, we can customize the image returned in the imageResponse.
+```js
+import { ImageResponse } from '@vercel/og';
+
+export const config = {
+    runtime: 'edge',
+};
+
+export async function GET(request) {
+    // URL is set and Description is fetched
+    }
+    
+    return new ImageResponse(
+    // The SVG template is used to generate the image
+}
+```
+You can use the [og-playground](https://og-playground.vercel.app/) to design your SVG sturcture.
+It is then returned in the imageReponse.
+```html
+<div
+  style={{
+      height: '100%',
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#fff',
+      fontSize: 32,
+      fontWeight: 600,
+      }}
+      >
+      <div
+        style={{
+        left: 42,
+        top: 42,
+        position: 'absolute',
+        display: 'flex',
+        alignItems: 'center',
+        }}
+        >
+        <span
+          style={{
+          width: 24,
+          height: 24,
+           background: 'black',
+          }}
+          />
+          <span
+            style={{
+              marginLeft: 8,
+              fontSize: 20,
+              }}
+                >
+                Extend Alt Text
+                </span>
+                </div>
+                <img height={300} width={300} src={URL} />
+                <div style={{
+                    fontSize: '20px',
+                    marginTop: 40,
+                    background: 'black',
+                    color: 'white',
+                    padding: '25px',
+                    width: '300px'
+                }}>{fetchDesc}</div>
+            </div>
+        ),
+        {
+            width: 1200,
+            height: 600,
+        },
+```
+
+You can see the generated image in this project in ``http://localhost:3000/ogimage``, or can check [https://extend-alt-text.vercel.app/ogimage](https://extend-alt-text.vercel.app/ogimage).
+
+This OG image is generated in every ``unique``requests. The revalidation time is set to 10s to control the cache behaviour.
+```js
+await fetch(`https://alt-text-generator.vercel.app/api/generate?imageUrl=${URL}`,
+        { mode: 'no-cors', next: { revalidate: 10 } },
+      );
+```
+As the `route.js` here is not handelling the incoming request you can send random request parameter to genarate og images in the hosted environment.
+
+Refreshing ``http://localhost:3000/ogimage`` will generate new og image each time.
+
+**But refreshing ``https://extend-alt-text.vercel.app/ogimage`` will not generate new og image each time, as it is remaining as cache in the edge, refreshing is not an `unique` request.**
+
+Passing a request param like ``https://extend-alt-text.vercel.app/ogimage``**``?=[anything_Random_here]``** will be treated as `unique` request and will generate new og image. Now this newly generated image can be cached for 10 second. Sending same parameter again will prompt the cached version of the og image.
+Frequently changing og image can influence the SEO, but it is absolutely okay to create Og images dynamically or for dynamic routes. 
+Handelling ``request`` and ``request.param`` to get the passed value can be used to dynamically add text in the og image by using ``{request.param}`` while structuring SVG in the returned imageResponse.
+
+
 See this question prompted by us on the [stackoverflow](https://stackoverflow.com/questions/75858925/how-to-use-vercel-og-image-in-next-js-app-folder).
 
 
