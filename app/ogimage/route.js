@@ -15,7 +15,7 @@ export async function GET(request) {
     let fetchDesc;
     try {
      const res = await fetch(`https://alt-text-generator.vercel.app/api/generate?imageUrl=${URL}`,
-        { mode: 'no-cors', next: { revalidate: 0 } },
+        { mode: 'no-cors', next: { revalidate: true } },
       );
       fetchDesc = await res.json();
     } catch (error) {
