@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Multiple from '../comp/batchUploader';
-import Footer from '../comp/footer';
 // import InputComp from '../comp/inputComp';
 import Styles from '../styles/page.module.css';
 
@@ -27,8 +26,7 @@ export default async function Page() {
       <section className={Styles.section}>
         <Multiple />
       </section>
-      <Footer />
-      {/* <footer className={Styles.footer}>Developed by: <Link href={`https://extend-alt-text.vercel.app/ogimage?=${Math.floor(Math.random() * 1083)}`}>🔵🔴🟢</Link>  | India | 2023</footer> */}
+      <footer className={Styles.footer}>Developed by: <Link href={`https://extend-alt-text.vercel.app/ogimage`}>🔵🔴🟢</Link>  | India | 2023</footer>
     </div>
   );
 }
