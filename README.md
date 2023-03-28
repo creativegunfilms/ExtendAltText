@@ -360,4 +360,3 @@ https://extend-alt-text.vercel.app/
 
 ## Developed by
 [Titas Mallick](https://github.com/titasmallick) & [Amit Sen](https://github.com/amit-sen) as open source project.
-thank you!
