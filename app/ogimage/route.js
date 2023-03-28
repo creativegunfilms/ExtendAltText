@@ -5,13 +5,25 @@ export const config = {
 };
 
 export async function GET(request) {
+    // Generating random id between 0 - 1083 to get the image
     let randomdid = Math.floor(Math.random() * 1083);
-    const URL = `https://picsum.photos/id/${randomdid}/300`;
-    const res = await fetch(
-        `https://alt-text-generator.vercel.app/api/generate?imageUrl=${URL}`,
-        { mode: 'no-cors' },
-    );
-    const fetchDesc = await res.json();
+
+    //Setting the image url
+    var URL = `https://picsum.photos/id/${randomdid}/300`;
+
+    //Fetch the Alt Text Generator
+    let fetchDesc;
+    try {
+     const res = await fetch(`https://alt-text-generator.vercel.app/api/generate?imageUrl=${URL}`,
+        { mode: 'no-cors', next: { revalidate: 0 } },
+      );
+      fetchDesc = await res.json();
+    } catch (error) {
+      //Using Fallback to narrow error boundary
+      URL = '/fallbackog.jpg'
+      fetchDesc = 'Extend Alt Text Can Generate Descriptions';
+    }
+    
     return new ImageResponse(
         (
             <div
