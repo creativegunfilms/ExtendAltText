@@ -5,6 +5,7 @@ export const config = {
 };
 
 export async function GET(request) {
+  console.log(request);
   //Setting the image url
   var URL;
   //Fetch the Alt Text Generator
