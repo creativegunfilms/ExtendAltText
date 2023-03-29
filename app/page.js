@@ -26,7 +26,7 @@ export default async function Page() {
       <section className={Styles.section}>
         <Multiple />
       </section>
-      <footer className={Styles.footer}>Developed by: <Link href={`https://extend-alt-text.vercel.app/ogimage`}>🔵🔴🟢</Link>  | India | 2023</footer>
+      <footer className={Styles.footer}>Developed by: <Link href={`https://extend-alt-text.vercel.app/ogimage`}>🔵🔴🟢</Link>  | India | 2023 <br></br> <div>Extend Alt Text by Amit Sen and Titas Mallick is marked with CC0 1.0 Universal</div></footer>
     </div>
   );
 }

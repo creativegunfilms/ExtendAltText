@@ -16,6 +16,9 @@
     text-align: center;
     border-top: 1px solid #d6d6e7 ;
 }
+.footer >div{
+    font-size: 0.6rem;
+}
 .button{
     display: inline-block;
     outline: 0;
