@@ -353,6 +353,8 @@ See this question prompted by us on the [stackoverflow](https://stackoverflow.co
 ## Documentation
 
 https://github.com/vercel/examples/tree/main/solutions/alt-tag-generator
+[Dev.to Article](https://dev.to/titasmallick/how-to-generate-dynamic-og-image-using-new-nextjs-with-app-directory-4bcn) 
+[Medium Article](https://medium.com/@titasmallick/og-or-opengraph-images-are-important-tool-for-improving-website-seo-8e73745702f1) 
 
 ## Website
 
