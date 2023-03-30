@@ -97,6 +97,7 @@ export async function GET(request) {
       width: 1200,
       height: 600,
     },
-  );
-  // return new Response(imageG);
+  ), {headers: {
+    'Cache-Control': 's-maxage=3600',
+  }};
 }
