@@ -16,19 +16,19 @@ export async function GET(request) {
     let randomdid;
     const getRandom = await fetch(
       'https://www.random.org/integers/?num=1&min=0&max=1083&col=1&base=10&format=plain',
-      { mode: 'no-cors', next: { revalidate: 10 } },
+      { mode: 'no-cors', cache: 'no-store' },
     );
     const numbget = await getRandom.json();
     randomdid = numbget || Math.floor(Math.random() * 1083);
     //Fetching the alt text linked to id
     const res = await fetch(
       `https://alt-text-generator.vercel.app/api/generate?imageUrl=https://picsum.photos/id/${randomdid}/300`,
-      { mode: 'no-cors', next: { revalidate: 10 } },
+      { mode: 'no-cors', cache: 'no-store' },
     );
     fetchDesc = await res.json();
     //fetching the actual image based on id
     const imagef = await fetch(`https://picsum.photos/id/${randomdid}/info`, {
-      next: { revalidate: 10 },
+      cache: 'no-store',
     });
     const imageD = await imagef.json();
     URL = `https://picsum.photos/id/${imageD.id}/300`;
