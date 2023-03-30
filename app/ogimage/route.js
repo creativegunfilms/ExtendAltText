@@ -6,7 +6,7 @@ export const config = {
 
 export async function GET(request) {
   console.log(request);
-  //Setting the image url
+  //Setting the image URL
   var URL;
   //Fetch the Alt Text Generator
   let fetchDesc;
