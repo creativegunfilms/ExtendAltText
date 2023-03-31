@@ -10,7 +10,7 @@ export default async function Page() {
       <p>
         This is a Project based on Next-Alt-Text-Generator, it extends its
         functionality. <Link href={'https://alt-text-generator.vercel.app/'}>See Original Project. </Link>Or
-        <Link href={'https://vercel.com/templates/next.js/ai-alt-text-generator'}> Deploy on Vercel. </Link> This project uses that as the backbone and extends the facilites like conversion of multiple files and generating alt text by uploading an image. This project is also open source. Here this is the link to the <Link href={'https://github.com/creativegunfilms/ExtendAltText.git'}>Github Repo</Link>.
+        <Link href={'https://vercel.com/templates/next.js/ai-alt-text-generator'}> Deploy on Vercel. </Link> This project uses that as the backbone and extends the facilites like conversion of multiple files and generating alt text by uploading an image. This project is also open source. Here this is the link to the <Link href={'https://github.com/creativegunfilms/ExtendAltText.git'}>GitHub Repo</Link>. Check out or API for generating random image and description set from <Link href={'https://randomimagedesc.creativegunfilms.workers.dev/'}>Here</Link>. Learn about the open graph image generation from our GitHub Readme, or from <Link href={'https://dev.to/titasmallick/how-to-generate-dynamic-og-image-using-new-nextjs-with-app-directory-4bcn'}>Here</Link>, or <Link href={'https://medium.com/@titasmallick/og-or-opengraph-images-are-important-tool-for-improving-website-seo-8e73745702f1'}>Here</Link>.
       </p>
       <h3>How does it work?</h3>
       <li>It takes the user input as URL</li>

@@ -347,7 +347,55 @@ Frequently changing og image can influence the SEO, but it is absolutely okay to
 Handelling ``request`` and ``request.param`` to get the passed value can be used to dynamically add text in the og image by using ``{request.param}`` while structuring SVG in the returned imageResponse.
 
 
-See this question prompted by us on the [stackoverflow](https://stackoverflow.com/questions/75858925/how-to-use-vercel-og-image-in-next-js-app-folder).
+See this question prompted by us on the [stackoverflow](https://stackoverflow.com/questions/75858925/how-to-use-vercel-og-image-in-next-js-app-folder) and [Dev.to Article](https://dev.to/titasmallick/how-to-generate-dynamic-og-image-using-new-nextjs-with-app-directory-4bcn), [Medium Article](https://medium.com/@titasmallick/og-or-opengraph-images-are-important-tool-for-improving-website-seo-8e73745702f1).
+
+## One API to cover your need of random images and description
+While developing this project, specifically the og image generation, we felt the need of having a single api that can give an image URL and it's description at one go.
+So here it is, we have developed that API and made it public and free to use.
+
+``https://randomimagedesc.creativegunfilms.workers.dev/``
+
+[Test out this API](https://randomimagedesc.creativegunfilms.workers.dev/)
+
+By using this API, the fetch can be now done like that:
+```
+export async function GET(request) {
+  //..
+  let data;
+  try {
+    const fetchData = await fetch(
+      'https://randomimagedesc.creativegunfilms.workers.dev/',
+      { mode: 'no-cors', cache: 'no-store' },
+    );
+    data = await fetchData.json();
+  } catch (error) {
+    //Using Fallback to narrow error boundary
+    //...
+  }
+
+  return new ImageResponse(
+    //...
+  );
+}
+```
+
+Our API returns a JSON like the following.
+```
+{
+  "id": 1035,
+  "imageURL": "https://picsum.photos/id/1035/300",
+  "description": "a man standing in front of a waterfall with a rainbow",
+  "apiCreator": "Amit Sen",
+  "randomQ": "It's the job that's never started that takes the longest to finish.",
+  "qAuthor": "J.R.R. Tolkien",
+  "c": "Extend Alt Text",
+  "u": "https://extend-alt-text.vercel.app/",
+  "g": "https://github.com/creativegunfilms/ExtendAltText.git",
+  "timestamp": 1680250845755
+}
+```
+
+By using this API now you can get the url from `{data.imageURL}`, description from `{data.description}` and so on, and then dynamically use them inside the ImageResponse, hope it will  you.
 
 
 ## Documentation
