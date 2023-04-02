@@ -1,15 +1,14 @@
 'use client';
 import imageCompression from 'browser-image-compression';
-import { CopyBlock, dracula } from "react-code-blocks";
+import { CopyBlock, dracula } from 'react-code-blocks';
 import { useState } from 'react';
-import Styles from '../styles/page.module.css'
+import Styles from '../styles/page.module.css';
 
 var urlSet = [];
 var filenameSet = [];
 
-
 //DATA BEING FETCHED FROM THE NEXT BACKEND
-const fetchFromBackend = async (url) => {  
+const fetchFromBackend = async (url) => {
   //console.log(url);
   const dataFromBackend = await fetch(`/api?${url}`, { mode: 'no-cors' });
   if (dataFromBackend.ok) {
@@ -52,7 +51,6 @@ const Multiple = () => {
   };
   //------------------------------input comp---------------------------------//
 
-
   const [blockState, sateBlockstate] = useState(1);
   const toggleButton = () => {
     if (blockState === 0) {
@@ -61,7 +59,7 @@ const Multiple = () => {
     if (blockState === 1) {
       sateBlockstate(0);
     }
-  }
+  };
   //CALL FUNCTION FOR EACH
   let x = 0;
   //HANDLE CLICK
@@ -73,13 +71,15 @@ const Multiple = () => {
       if (getData) {
         const useData = getData.data;
         arrD.push({ data: useData, fileName: filenameSet[i] });
-        setLoading(`Got Data for File No. ${i + 1} of ${urlSet.length} file(s).`);
+        setLoading(
+          `Got Data for File No. ${i + 1} of ${urlSet.length} file(s).`,
+        );
       }
     }
     setIncomingAlt(arrD);
     setLoading('');
     urlSet = [];
-    filenameSet = []; 
+    filenameSet = [];
     setButtonHide(false);
   };
 
@@ -108,7 +108,9 @@ const Multiple = () => {
     var maxImageSizeMB = 0.5;
 
     for (let x = 0; x < filesData.length; x++) {
-      setLoading(`File No. ${x + 1} of ${filesData.length} file(s) being converted...`);
+      setLoading(
+        `File No. ${x + 1} of ${filesData.length} file(s) being converted...`,
+      );
 
       //RESIZE THE FILES
 
@@ -160,40 +162,75 @@ const Multiple = () => {
   return (
     <>
       <form className={Styles.form} onSubmit={formHandler}>
-        <input placeholder='Paste your Image URL to get the data' className={Styles.input} type="text" id="urlInput"></input>
-        <input className={buttonHide ? Styles.hiddenbutton : Styles.button} type="submit"></input>
         <input
-        className={Styles.inputFile}
-        accept="image/*"
-        type={'file'}
-        onChange={fileUploader}
-        multiple
-      ></input>
+          placeholder="Paste your Image URL to get the data"
+          className={Styles.input}
+          type="text"
+          id="urlInput"
+        ></input>
+        <input
+          className={buttonHide ? Styles.hiddenbutton : Styles.button}
+          type="submit"
+        ></input>
+        <input
+          className={Styles.inputFile}
+          accept="image/*"
+          type={'file'}
+          onChange={fileUploader}
+          multiple
+        ></input>
       </form>
 
-      {incomingAlt && <input className={Styles.check} id='toggleSwitch' onChange={toggleButton} type='checkbox' />}
-      {incomingAlt && <label htmlFor='toggleSwitch'>Only Text</label>}
-      <br/>
-      {blockState === 1 &&
+      {incomingAlt && (
+        <input
+          className={Styles.check}
+          id="toggleSwitch"
+          onChange={toggleButton}
+          type="checkbox"
+        />
+      )}
+      {incomingAlt && <label htmlFor="toggleSwitch">Only Text</label>}
+      <br />
+      {blockState === 1 && (
         <CopyBlock
-          text={incomingAlt == null ? urlData =='' ? loading : `URL: ${urlData}\nDescription:\n${internalState}` : incomingAlt.map((units) => { return (`<img src="${units.fileName}" alt="${units.data}">\n`) }).join("")}
-          language='html'
+          text={
+            incomingAlt == null
+              ? urlData == ''
+                ? loading
+                : `URL: ${urlData}\nDescription:\n${internalState}`
+              : incomingAlt
+                  .map((units) => {
+                    return `<img src="${units.fileName}" alt="${units.data}">\n`;
+                  })
+                  .join('')
+          }
+          language="html"
           showLineNumbers={incomingAlt == null ? false : true}
           theme={dracula}
           wrapLines={true}
           codeBlock
         />
-      }
-      {incomingAlt && blockState === 0 &&
+      )}
+      {incomingAlt && blockState === 0 && (
         <CopyBlock
-          text={incomingAlt == null ? urlData =='' ? loading : `URL: ${urlData}\nDescription:\n${internalState}` : incomingAlt.map((units) => { return (`File Name: ${units.fileName} \nDescription: ${units.data}\n\n`) }).join("")}
-          language='text'
+          text={
+            incomingAlt == null
+              ? urlData == ''
+                ? loading
+                : `URL: ${urlData}\nDescription:\n${internalState}`
+              : incomingAlt
+                  .map((units) => {
+                    return `File Name: ${units.fileName} \nDescription: ${units.data}\n\n`;
+                  })
+                  .join('')
+          }
+          language="text"
           codeBlock
           showLineNumbers={false}
           theme={dracula}
           wrapLines={true}
         />
-      }
+      )}
     </>
   );
 };

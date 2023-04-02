@@ -9,24 +9,81 @@ export default async function Page() {
       <h1>Extend Alt Text</h1>
       <p>
         This is a Project based on Next-Alt-Text-Generator, it extends its
-        functionality. <Link href={'https://alt-text-generator.vercel.app/'}>See Original Project. </Link>Or
-        <Link href={'https://vercel.com/templates/next.js/ai-alt-text-generator'}> Deploy on Vercel. </Link> This project uses that as the backbone and extends the facilites like conversion of multiple files and generating alt text by uploading an image. This project is also open source. Here this is the link to the <Link href={'https://github.com/creativegunfilms/ExtendAltText.git'}>GitHub Repo</Link>. Check out or API for generating random image and description set from <Link href={'https://randomimagedesc.creativegunfilms.workers.dev/'}>Here</Link>. Learn about the open graph image generation from our GitHub Readme, or from <Link href={'https://dev.to/titasmallick/how-to-generate-dynamic-og-image-using-new-nextjs-with-app-directory-4bcn'}>Here</Link>, or <Link href={'https://medium.com/@titasmallick/og-or-opengraph-images-are-important-tool-for-improving-website-seo-8e73745702f1'}>Here</Link>.
+        functionality.{' '}
+        <Link href={'https://alt-text-generator.vercel.app/'}>
+          See Original Project.{' '}
+        </Link>
+        Or
+        <Link
+          href={'https://vercel.com/templates/next.js/ai-alt-text-generator'}
+        >
+          {' '}
+          Deploy on Vercel.{' '}
+        </Link>{' '}
+        This project uses that as the backbone and extends the facilites like
+        conversion of multiple files and generating alt text by uploading an
+        image. This project is also open source. Here this is the link to the{' '}
+        <Link href={'https://github.com/creativegunfilms/ExtendAltText.git'}>
+          GitHub Repo
+        </Link>
+        . Check out or API for generating random image and description set from{' '}
+        <Link href={'https://randomimagedesc.creativegunfilms.workers.dev/'}>
+          Here
+        </Link>
+        . Learn about the open graph image generation from our GitHub Readme, or
+        from{' '}
+        <Link
+          href={
+            'https://dev.to/titasmallick/how-to-generate-dynamic-og-image-using-new-nextjs-with-app-directory-4bcn'
+          }
+        >
+          Here
+        </Link>
+        , or{' '}
+        <Link
+          href={
+            'https://medium.com/@titasmallick/og-or-opengraph-images-are-important-tool-for-improving-website-seo-8e73745702f1'
+          }
+        >
+          Here
+        </Link>
+        .
       </p>
       <h3>How does it work?</h3>
       <li>It takes the user input as URL</li>
-      <li>Or it takes multiple Images as input and uploads it to <Link href={'https://file.io/'}>File.io</Link></li>
+      <li>
+        Or it takes multiple Images as input and uploads it to{' '}
+        <Link href={'https://file.io/'}>File.io</Link>
+      </li>
       <li>It takes the return URL and makes an API call</li>
       <li>The backend API call requests the Vercel Alt Text Generator</li>
-      <li>The Vercel Alt Text Generator uses ML modal from Salesforce called BLIP on <Link href={'https://replicate.com/'}>Replicate</Link> to generate relevant alt text for images</li>
+      <li>
+        The Vercel Alt Text Generator uses ML modal from Salesforce called BLIP
+        on <Link href={'https://replicate.com/'}>Replicate</Link> to generate
+        relevant alt text for images
+      </li>
       <li>It shows the result to the frontend</li>
-      <li>Fetch request from the alt text generator deletes the File.io image which is essentially a feature of the file.io free plan</li>
+      <li>
+        Fetch request from the alt text generator deletes the File.io image
+        which is essentially a feature of the file.io free plan
+      </li>
       <li>No file is kept on the database</li>
       <br />
-      <em>Fill free to use it in your project. Respect to the original creators.</em>
+      <em>
+        Fill free to use it in your project. Respect to the original creators.
+      </em>
       <section className={Styles.section}>
         <Multiple />
       </section>
-      <footer className={Styles.footer}>Developed by: <Link href={`https://extend-alt-text.vercel.app/ogimage`}>🔵🔴🟢</Link>  | India | 2023 <br></br> <div>Extend Alt Text by Amit Sen and Titas Mallick is marked with CC0 1.0 Universal</div></footer>
+      <footer className={Styles.footer}>
+        Developed by:{' '}
+        <Link href={`https://extend-alt-text.vercel.app/ogimage`}>🔵🔴🟢</Link>{' '}
+        | India | 2023 <br></br>{' '}
+        <div>
+          Extend Alt Text by Amit Sen and Titas Mallick is marked with CC0 1.0
+          Universal
+        </div>
+      </footer>
     </div>
   );
 }
