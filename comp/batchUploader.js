@@ -197,7 +197,7 @@ const Multiple = () => {
             incomingAlt == null
               ? urlData == ''
                 ? loading
-                : `URL: ${urlData}\nDescription:\n${internalState}`
+                : `URL: ${urlData}\n${internalState}`
               : incomingAlt
                   .map((units) => {
                     return `<img src="${units.fileName}" alt="${units.data}">\n`;
@@ -217,7 +217,7 @@ const Multiple = () => {
             incomingAlt == null
               ? urlData == ''
                 ? loading
-                : `URL: ${urlData}\nDescription:\n${internalState}`
+                : `URL: ${urlData}\n${internalState}`
               : incomingAlt
                   .map((units) => {
                     return `File Name: ${units.fileName} \n${units.data}\n\n`;
