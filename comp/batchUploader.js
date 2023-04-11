@@ -220,7 +220,7 @@ const Multiple = () => {
                 : `URL: ${urlData}\nDescription:\n${internalState}`
               : incomingAlt
                   .map((units) => {
-                    return `File Name: ${units.fileName} \nDescription: ${units.data}\n\n`;
+                    return `File Name: ${units.fileName} \n${units.data}\n\n`;
                   })
                   .join('')
           }
